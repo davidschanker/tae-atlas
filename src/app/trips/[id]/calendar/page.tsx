@@ -238,10 +238,11 @@ export default async function CalendarPage({
           <input type="hidden" name="trip_id" value={tripId} />
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="day-date" className="block text-sm font-medium text-gray-700 mb-1">
                 Date <span className="text-red-500">*</span>
               </label>
               <input
+                id="day-date"
                 name="date"
                 type="date"
                 required
@@ -249,10 +250,11 @@ export default async function CalendarPage({
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="day-location" className="block text-sm font-medium text-gray-700 mb-1">
                 Where you are
               </label>
               <input
+                id="day-location"
                 name="location"
                 placeholder="Edinburgh"
                 className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
@@ -261,10 +263,11 @@ export default async function CalendarPage({
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="day-accommodation" className="block text-sm font-medium text-gray-700 mb-1">
                 Where you sleep
               </label>
               <select
+                id="day-accommodation"
                 name="accommodation_id"
                 className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent bg-white"
               >
@@ -277,10 +280,11 @@ export default async function CalendarPage({
               </select>
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="day-notes" className="block text-sm font-medium text-gray-700 mb-1">
                 Notes
               </label>
               <input
+                id="day-notes"
                 name="notes"
                 placeholder="Drive to Skye in the morning..."
                 className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"

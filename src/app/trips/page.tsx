@@ -1,6 +1,7 @@
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
+import { randomUUID } from "crypto";
 import Link from "next/link";
 
 export default async function TripsPage() {
@@ -29,14 +30,13 @@ export default async function TripsPage() {
     const start_date = (formData.get("start_date") as string) || null;
     const end_date = (formData.get("end_date") as string) || null;
 
-    const { data, error } = await supabase
+    const tripId = randomUUID();
+    const { error } = await supabase
       .from("trips")
-      .insert({ name, destination, description, start_date, end_date, created_by: user.id })
-      .select("id")
-      .single();
+      .insert({ id: tripId, name, destination, description, start_date, end_date, created_by: user.id });
 
-    if (error) throw error;
-    redirect(`/trips/${data.id}/calendar`);
+    if (error) redirect(`/trips?createError=${encodeURIComponent(error.code + ': ' + error.message)}`);
+    redirect(`/trips/${tripId}/calendar`);
   }
 
   async function signOut() {
@@ -105,10 +105,11 @@ export default async function TripsPage() {
           <form action={createTrip} className="space-y-4">
             <div className="grid gap-4 sm:grid-cols-2">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="trip-name" className="block text-sm font-medium text-gray-700 mb-1">
                   Trip name <span className="text-red-500">*</span>
                 </label>
                 <input
+                  id="trip-name"
                   name="name"
                   required
                   placeholder="Scotland 2025"
@@ -116,10 +117,11 @@ export default async function TripsPage() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="trip-destination" className="block text-sm font-medium text-gray-700 mb-1">
                   Destination
                 </label>
                 <input
+                  id="trip-destination"
                   name="destination"
                   placeholder="Scotland"
                   className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
@@ -128,20 +130,22 @@ export default async function TripsPage() {
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="trip-start-date" className="block text-sm font-medium text-gray-700 mb-1">
                   Start date
                 </label>
                 <input
+                  id="trip-start-date"
                   name="start_date"
                   type="date"
                   className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="trip-end-date" className="block text-sm font-medium text-gray-700 mb-1">
                   End date
                 </label>
                 <input
+                  id="trip-end-date"
                   name="end_date"
                   type="date"
                   className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
@@ -149,10 +153,11 @@ export default async function TripsPage() {
               </div>
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="trip-description" className="block text-sm font-medium text-gray-700 mb-1">
                 Description
               </label>
               <textarea
+                id="trip-description"
                 name="description"
                 rows={2}
                 placeholder="A quick note about this trip..."

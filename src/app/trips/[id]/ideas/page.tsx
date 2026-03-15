@@ -219,10 +219,11 @@ export default async function IdeasPage({
           <input type="hidden" name="trip_id" value={tripId} />
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="idea-title" className="block text-sm font-medium text-gray-700 mb-1">
                 Title <span className="text-red-500">*</span>
               </label>
               <input
+                id="idea-title"
                 name="title"
                 required
                 placeholder="Scotch Whisky Experience"

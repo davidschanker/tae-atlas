@@ -62,10 +62,11 @@ export default function AddTravelLegForm({ addTravelLeg }: Props) {
 
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="leg-origin" className="block text-sm font-medium text-gray-700 mb-1">
             From <span className="text-red-500">*</span>
           </label>
           <input
+            id="leg-origin"
             name="origin"
             required
             placeholder={type === "flight" ? "JFK" : "New York, NY"}
@@ -73,10 +74,11 @@ export default function AddTravelLegForm({ addTravelLeg }: Props) {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="leg-destination" className="block text-sm font-medium text-gray-700 mb-1">
             To <span className="text-red-500">*</span>
           </label>
           <input
+            id="leg-destination"
             name="destination"
             required
             placeholder={type === "flight" ? "EDI" : "Edinburgh, UK"}
@@ -87,10 +89,11 @@ export default function AddTravelLegForm({ addTravelLeg }: Props) {
 
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="leg-departure-date" className="block text-sm font-medium text-gray-700 mb-1">
             Departure date <span className="text-red-500">*</span>
           </label>
           <input
+            id="leg-departure-date"
             name="departure_date"
             type="date"
             required
@@ -98,10 +101,11 @@ export default function AddTravelLegForm({ addTravelLeg }: Props) {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="leg-departure-time" className="block text-sm font-medium text-gray-700 mb-1">
             Departure time <span className="text-red-500">*</span>
           </label>
           <input
+            id="leg-departure-time"
             name="departure_time"
             type="time"
             required
@@ -112,10 +116,11 @@ export default function AddTravelLegForm({ addTravelLeg }: Props) {
 
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="leg-arrival-date" className="block text-sm font-medium text-gray-700 mb-1">
             Arrival date <span className="text-red-500">*</span>
           </label>
           <input
+            id="leg-arrival-date"
             name="arrival_date"
             type="date"
             required
@@ -123,10 +128,11 @@ export default function AddTravelLegForm({ addTravelLeg }: Props) {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="leg-arrival-time" className="block text-sm font-medium text-gray-700 mb-1">
             Arrival time <span className="text-red-500">*</span>
           </label>
           <input
+            id="leg-arrival-time"
             name="arrival_time"
             type="time"
             required

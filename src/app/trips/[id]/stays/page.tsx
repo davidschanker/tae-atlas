@@ -223,10 +223,11 @@ export default async function StaysPage({
           <input type="hidden" name="trip_id" value={tripId} />
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="stay-name" className="block text-sm font-medium text-gray-700 mb-1">
                 Name <span className="text-red-500">*</span>
               </label>
               <input
+                id="stay-name"
                 name="name"
                 required
                 placeholder="The Witchery"
@@ -234,10 +235,11 @@ export default async function StaysPage({
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="stay-url" className="block text-sm font-medium text-gray-700 mb-1">
                 Link (Airbnb, hotel, etc.)
               </label>
               <input
+                id="stay-url"
                 name="url"
                 type="url"
                 placeholder="https://..."
@@ -247,10 +249,11 @@ export default async function StaysPage({
           </div>
           <div className="grid gap-4 sm:grid-cols-3">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="stay-price" className="block text-sm font-medium text-gray-700 mb-1">
                 Price / night ($)
               </label>
               <input
+                id="stay-price"
                 name="price_per_night"
                 type="number"
                 min="0"
@@ -260,17 +263,18 @@ export default async function StaysPage({
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="stay-checkin" className="block text-sm font-medium text-gray-700 mb-1">
                 Check-in
               </label>
               <input
+                id="stay-checkin"
                 name="check_in_date"
                 type="date"
                 className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="stay-checkout" className="block text-sm font-medium text-gray-700 mb-1">
                 Check-out
               </label>
               <input
